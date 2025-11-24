@@ -2,78 +2,400 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>AI Workshop Resource Hub</title>
+  <title>AI Research Workshop · Student Resource Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
   <style>
     :root {
-      --bg: #172f5b;
-      --card: rgba(255,255,255,0.05);
+      --bg-deep: #020617;
+      --bg-mid: #172f5b; /* your requested blue */
       --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.15);
-      --text-main: #ffffff;
-      --text-muted: #cbd5e1;
-      --border-subtle: rgba(255, 255, 255, 0.12);
+      --accent-soft: rgba(56, 189, 248, 0.18);
+      --accent-strong: #0ea5e9;
+      --card-bg: rgba(15, 23, 42, 0.9);
+      --card-light: rgba(248, 250, 252, 0.9);
+      --text-main: #e5e7eb;
+      --text-muted: #94a3b8;
+      --border-subtle: rgba(148, 163, 184, 0.35);
+      --shadow-soft: 0 24px 80px rgba(15, 23, 42, 0.6);
+      --radius-xl: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
       color: var(--text-main);
       min-height: 100vh;
-      padding-bottom: 40px;
+      background:
+        radial-gradient(circle at top left, #e5f2ff 0, transparent 45%),
+        radial-gradient(circle at top right, #f5f3ff 0, transparent 45%),
+        radial-gradient(circle at 80% 110%, #0f172a 0, transparent 55%),
+        linear-gradient(160deg, #f9fafb 0, #172f5b 36%, #020617 100%);
+      background-attachment: fixed;
     }
 
     .page {
-      max-width: 900px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 32px 20px;
+      padding: 32px 16px 56px;
     }
 
-    header {
-      text-align: center;
+    .top-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 28px;
+      align-items: stretch;
       margin-bottom: 32px;
     }
 
-    header h1 {
-      font-size: 2.4rem;
-      margin: 10px 0;
+    @media (max-width: 880px) {
+      .top-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
-    .top-intro {
-      margin-bottom: 28px;
-      font-size: 1.05rem;
-      color: var(--text-muted);
+    .hero-card {
+      background: rgba(248, 250, 252, 0.96);
+      color: #020617;
+      border-radius: var(--radius-xl);
+      padding: 24px 24px 20px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+      position: relative;
+      overflow: hidden;
     }
 
-    .headshot {
-      width: 160px;
-      height: auto;
-      border-radius: 12px;
-      margin: 12px 0;
-      border: 2px solid var(--accent-soft);
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.18) 0, transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(129, 140, 248, 0.16) 0, transparent 55%);
+      opacity: 0.8;
+      pointer-events: none;
+      mix-blend-mode: multiply;
     }
 
-    .logo {
-      margin-top: 4px;
-      width: 260px;
-      height: auto;
+    .hero-inner {
+      position: relative;
+      z-index: 1;
     }
 
-    main section {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 18px 20px;
-      border: 1px solid var(--border-subtle);
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: rgba(15, 23, 42, 0.03);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      margin-bottom: 10px;
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      font-size: clamp(2rem, 3.1vw, 2.6rem);
+      letter-spacing: 0.02em;
+      margin: 0 0 8px;
+    }
+
+    .hero-sub {
+      margin: 0 0 18px;
+      font-size: 0.97rem;
+      color: #4b5563;
+      max-width: 460px;
+      line-height: 1.55;
+    }
+
+    .hero-sub strong {
+      font-weight: 600;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
       margin-bottom: 18px;
     }
 
-    section h2 {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
+    .hero-tag {
+      font-size: 0.78rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      color: #4b5563;
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .hero-links {
       display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      font-size: 0.86rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        background 0.12s ease, border-color 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top left, #38bdf8 0, #0f172a 120%);
+      color: #f9fafb;
+      border-color: rgba(56, 189, 248, 0.8);
+      box-shadow: 0 16px 35px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(56, 189, 248, 0.45);
+    }
+
+    .btn-ghost {
+      background: rgba(248, 250, 252, 0.85);
+      color: #0f172a;
+    }
+
+    .btn-ghost:hover {
+      background: #e5e7eb;
+      transform: translateY(-1px);
+    }
+
+    .btn span.icon {
+      font-size: 1.05rem;
+    }
+
+    .contact-line {
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .contact-line span {
+      opacity: 0.85;
+    }
+
+    .contact-line strong {
+      font-weight: 600;
+    }
+
+    .aside-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      background: radial-gradient(circle at 10% 0, rgba(15, 23, 42, 0.8) 0, rgba(15, 23, 42, 0.95) 55%, rgba(15, 23, 42, 0.98) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .aside-card::before {
+      content: "";
+      position: absolute;
+      inset: -50%;
+      background:
+        conic-gradient(from 180deg, rgba(56, 189, 248, 0.15), transparent 35%, rgba(129, 140, 248, 0.18), transparent 70%, rgba(56, 189, 248, 0.15));
+      opacity: 0.7;
+      filter: blur(12px);
+      pointer-events: none;
+    }
+
+    .aside-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .headshot-wrap {
+      position: relative;
+      width: 96px;
+      height: 96px;
+      border-radius: 999px;
+      padding: 3px;
+      background:
+        conic-gradient(from 220deg, #38bdf8, #a855f7, #38bdf8);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.85);
+    }
+
+    .headshot-wrap img {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .aside-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .aside-name {
+      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      font-size: 1.02rem;
+      font-weight: 600;
+    }
+
+    .aside-role {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .logo-chip {
+      margin-top: 8px;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .logo-chip img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .logo-chip span {
+      color: #e5e7eb;
+      letter-spacing: 0.03em;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .aside-badge-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .aside-badge {
+      font-size: 0.72rem;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+    }
+
+    main {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .section-card {
+      border-radius: var(--radius-xl);
+      padding: 18px 18px 16px;
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(
+          135deg,
+          rgba(15, 23, 42, 0.96),
+          rgba(15, 23, 42, 0.88)
+        );
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-card.light {
+      background: linear-gradient(
+        135deg,
+        rgba(248, 250, 252, 0.98),
+        rgba(241, 245, 249, 0.96)
+      );
+      color: #020617;
+      border-color: rgba(148, 163, 184, 0.5);
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.28);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .section-emoji {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 0, var(--accent) 0, #0f172a 100%);
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
+      font-size: 0.95rem;
+    }
+
+    .section-title {
+      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+    }
+
+    .section-card p,
+    .section-card li {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+
+    .section-card.light p,
+    .section-card.light li {
+      color: #4b5563;
+    }
+
+    .section-card ul {
+      margin: 6px 0 0;
+      padding-left: 1.1rem;
     }
 
     a {
@@ -81,134 +403,562 @@
       text-decoration: none;
     }
 
+    .section-card.light a {
+      color: #0369a1;
+    }
+
     a:hover {
       text-decoration: underline;
     }
 
-    ul { padding-left: 1.1rem; }
-    li { margin-bottom: 6px; }
-
     .link-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 12px;
-      margin-top: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
     }
 
     .link-card {
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 12px;
-      background: rgba(255,255,255,0.04);
-      transition: 0.15s ease;
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.85) 0, rgba(15, 23, 42, 0.97) 65%);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        border-color 0.12s ease, background 0.12s ease;
+    }
+
+    .link-card.light {
+      background: rgba(248, 250, 252, 0.96);
+      border-color: rgba(148, 163, 184, 0.6);
+    }
+
+    .link-card a {
+      font-size: 0.9rem;
+      font-weight: 550;
+    }
+
+    .link-card small {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .section-card.light .link-card small {
+      color: #6b7280;
+    }
+
+    .link-card span.badge {
+      align-self: flex-start;
+      font-size: 0.75rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .link-card.light span.badge {
+      background: #0f172a;
+      color: #f9fafb;
     }
 
     .link-card:hover {
-      border-color: var(--accent-soft);
       transform: translateY(-2px);
+      border-color: var(--accent-soft);
+      box-shadow: 0 14px 38px rgba(15, 23, 42, 0.9);
+      background: radial-gradient(circle at 10% 0, #0f172a 0, #020617 85%);
+    }
+
+    .link-card.light:hover {
+      background: #f9fafb;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.25);
+    }
+
+    .code-block {
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 0.8rem;
+      white-space: pre-wrap;
+      color: #e5e7eb;
+      overflow-x: auto;
+    }
+
+    .crit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .crit-card {
+      border-radius: 14px;
+      padding: 9px 10px;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.18) 0, rgba(15, 23, 42, 0.96) 70%);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+
+    .crit-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+      color: #e5f3ff;
+    }
+
+    .crit-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .ethic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .ethic-pill {
+      border-radius: 14px;
+      padding: 9px 10px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.14) 0, rgba(15, 23, 42, 0.96) 70%);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .traffic-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .traffic-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+    }
+
+    .traffic-dot.green {
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    .traffic-dot.yellow {
+      background: #eab308;
+      box-shadow: 0 0 10px rgba(234, 179, 8, 0.9);
+    }
+
+    .traffic-dot.red {
+      background: #ef4444;
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.9);
+    }
+
+    .tool-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .tool-item {
+      border-radius: 14px;
+      padding: 9px 10px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.88) 0, rgba(15, 23, 42, 1) 70%);
+    }
+
+    .tool-item strong {
+      font-size: 0.88rem;
+    }
+
+    .tool-item p {
+      margin: 2px 0 0;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .footer-note {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 880px) {
+      .aside-inner {
+        grid-template-columns: auto 1fr;
+      }
+      .hero-links {
+        flex-direction: row;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-card,
+      .aside-card {
+        padding: 18px 16px 16px;
+      }
+      .headshot-wrap {
+        width: 80px;
+        height: 80px;
+      }
+      .hero-links {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
-
 <body>
   <div class="page">
-    <header>
-      <img src="/mnt/data/Square Headshot.jpeg2.jpg" alt="Ben Dudley" class="headshot" />
-      <img src="/mnt/data/Dark Arc Logo '25.png" alt="Agentic Arc Logo" class="logo" />
+    <div class="top-grid">
+      <!-- LEFT: main intro & links -->
+      <section class="hero-card">
+        <div class="hero-inner">
+          <div class="pill">
+            <span class="pill-dot"></span>
+            <span>AI Research Workshop · Student Resource Hub</span>
+          </div>
+          <h1 class="hero-title">Thanks for exploring AI with me today.</h1>
+          <p class="hero-sub">
+            This page gathers the tools, links, and ideas we talked about so you can
+            keep using AI to ask better questions, do better research, and support
+            your community partners. <strong>Bookmark this page now</strong> so you
+            can come back to it during the semester.
+          </p>
 
-      <h1>Thanks for Attending the AI Research Workshop</h1>
-      <p class="top-intro">
-        Here are all the tools, links, and resources we explored — plus a few extras to help you keep going.
-      </p>
+          <div class="hero-meta">
+            <span class="hero-tag">CRIT prompt framework</span>
+            <span class="hero-tag">Green · Yellow · Red AI uses</span>
+            <span class="hero-tag">Ethical & practical AI for students</span>
+          </div>
 
-      <p>
-        <strong>Presentation:</strong>
-        <a href="https://www.canva.com/design/DAG5FGgLRjQ/I5QlQK-D6Ps1enSsC_JbFQ/edit" target="_blank">
-          View the Workshop Slides
-        </a>
-      </p>
+          <div class="hero-links">
+            <a
+              class="btn btn-primary"
+              href="https://www.canva.com/design/DAG5FGgLRjQ/I5QlQK-D6Ps1enSsC_JbFQ/edit"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="icon">📊</span>
+              <span>View the workshop presentation</span>
+            </a>
+            <a
+              class="btn btn-ghost"
+              href="https://www.linkedin.com/in/ben-dudley1/"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="icon">🔗</span>
+              <span>Connect with me on LinkedIn</span>
+            </a>
+          </div>
 
-      <p>
-        <strong>Connect with me:</strong><br/>
-        <a href="https://www.linkedin.com/in/ben-dudley1/" target="_blank">LinkedIn</a>  
-        • Email: <a href="mailto:Ben@agenticarc.ai">Ben@agenticarc.ai</a>  
-        • Phone: <a href="tel:+17046548446">704-654-8446</a>
-      </p>
-    </header>
+          <p class="contact-line">
+            Want to share feedback or a project you built with AI?  
+            <span>Reach out via LinkedIn, or your instructor can pass a note along.</span>
+            <!--
+              If you want to add direct contact later, you can replace the line above with:
+              Email me at <strong>youremail@school.edu</strong> or text <strong>(XXX) XXX-XXXX</strong>.
+            -->
+          </p>
+        </div>
+      </section>
+
+      <!-- RIGHT: your info, headshot + logo -->
+      <aside class="aside-card">
+        <div class="aside-inner">
+          <div class="headshot-wrap">
+            <!-- TODO: upload your headshot to the repo and update this src.
+                 Example: rename file to "ben-headshot-square.jpg" in GitHub and use that name here. -->
+            <img src="ben-headshot-square.jpg" alt="Photo of Ben Dudley" />
+          </div>
+          <div class="aside-text">
+            <div class="aside-name">Ben Dudley</div>
+            <div class="aside-role">
+              AI Consultant for Small & Mid-Sized Organizations · Workshop Facilitator
+            </div>
+
+            <div class="logo-chip">
+              <!-- TODO: upload your logo (e.g. dark-arc-logo-25.png) into the repo and update src -->
+              <img src="dark-arc-logo-25.png" alt="Agentic Arc AI logo" />
+              <span>Agentic Arc AI</span>
+            </div>
+
+            <div class="aside-badge-row">
+              <span class="aside-badge">AI strategy & training</span>
+              <span class="aside-badge">Ethical, practical tools</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
 
     <main>
-
-      <!-- AI Apps -->
-      <section>
-        <h2>💡 AI Tools We Covered</h2>
+      <!-- Core AI tools -->
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-emoji">🤖</div>
+          <div class="section-title">AI tools we talked about</div>
+        </div>
+        <p>
+          These are the main large language model (LLM) tools you can use. They’re all
+          built on similar ideas, but have different strengths and login options.
+        </p>
         <div class="link-grid">
           <div class="link-card">
-            <a href="https://chatgpt.com" target="_blank">ChatGPT</a><br/>
-            <small>General-purpose reasoning, writing, and research.</small>
+            <a href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a>
+            <small>Great for quick brainstorming, outlining, and first-draft writing.</small>
+            <span class="badge">No special student “pro” plan</span>
           </div>
           <div class="link-card">
-            <a href="https://claude.ai" target="_blank">Claude</a><br/>
-            <small>Great for reading long PDFs and analysis-heavy work.</small>
+            <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a>
+            <small>Excellent for reading, summarizing, and reasoning over long texts.</small>
+            <span class="badge">No special student “pro” plan</span>
           </div>
           <div class="link-card">
-            <a href="https://gemini.google.com" target="_blank">Gemini (Free Version)</a><br/>
-            <small>Google’s model — great for docs, research, and study support.</small>
-          </div>
-          <div class="link-card">
-            <a href="https://gemini.google/students/" target="_blank">Gemini Student Plan (1 Year Free)</a><br/>
-            <small>Free advanced features for students who sign up with .edu emails.</small>
+            <a href="https://gemini.google" target="_blank" rel="noopener">Gemini</a>
+            <small>Connects well with Google Docs, Slides, and other Google tools.</small>
+            <span class="badge">Free tier available</span>
           </div>
         </div>
       </section>
 
-      <!-- Prompts -->
-      <section>
-        <h2>✏️ 100+ Prompts for Students</h2>
+      <!-- Gemini student plan -->
+      <section class="section-card light">
+        <div class="section-header">
+          <div class="section-emoji">🎓</div>
+          <div class="section-title">Gemini for students</div>
+        </div>
         <p>
-          Use these to help with writing, studying, research, organization, and more.
+          If your school is eligible, you may be able to access
+          <strong>Gemini Advanced</strong> for free through Google’s student offer.
         </p>
+        <div class="link-grid">
+          <div class="link-card light">
+            <a href="https://gemini.google/students/" target="_blank" rel="noopener">
+              Gemini 1-year student offer
+            </a>
+            <small>
+              Check this page to see if your school email qualifies you for a free year of Gemini Advanced.
+            </small>
+          </div>
+          <div class="link-card light">
+            <a href="https://gemini.google" target="_blank" rel="noopener">
+              Try Gemini for free
+            </a>
+            <small>
+              Use the free version to experiment with research, idea-generation, and study help.
+            </small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prompt ideas -->
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-emoji">🧠</div>
+          <div class="section-title">100+ prompt ideas for college students</div>
+        </div>
         <p>
-          <a href="https://chatgpt.com/use-cases/students#" target="_blank">View 100 College Student Prompts</a>
+          Stuck on what to ask? This collection gives you lots of examples of how to use AI for classes,
+          organization, and life.
+        </p>
+        <div class="link-grid">
+          <div class="link-card">
+            <a href="https://chatgpt.com/use-cases/students#" target="_blank" rel="noopener">
+              100+ ChatGPT prompts for students
+            </a>
+            <small>Browse example prompts for studying, planning, writing, and more.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- CRIT framework -->
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-emoji">✍️</div>
+          <div class="section-title">Prompt engineering with CRIT</div>
+        </div>
+        <p>
+          We used the <strong>CRIT</strong> framework to turn rough ideas into clearer prompts:
+          <strong>Context · Role · Interview · Task</strong>.
+        </p>
+        <div class="crit-grid">
+          <div class="crit-card">
+            <div class="crit-title">C · Context</div>
+            <p>
+              Tell the AI what you’re working on: your class, your project, your community partner,
+              and any constraints (timeline, audience, format).
+            </p>
+          </div>
+          <div class="crit-card">
+            <div class="crit-title">R · Role</div>
+            <p>
+              Assign the AI a useful role: research assistant, skeptical editor, tutor, outreach coach,
+              grant-writing helper, etc.
+            </p>
+          </div>
+          <div class="crit-card">
+            <div class="crit-title">I · Interview</div>
+            <p>
+              Treat it like a back-and-forth: ask follow-up questions, ask it to challenge you,
+              or to suggest non-obvious directions and gaps.
+            </p>
+          </div>
+          <div class="crit-card">
+            <div class="crit-title">T · Task</div>
+            <p>
+              Be specific about what you want: “turn these notes into 3 research questions,”
+              “summarize in bullet points,” “draft 2 email options,” etc.
+            </p>
+          </div>
+        </div>
+
+        <div class="code-block">
+Example CRIT prompt:
+
+I’m a college student working with a community partner focused on [TOPIC].
+Context: This is for a semester-long project where we need to understand their challenges and propose realistic ideas.
+Role: Act as a research assistant who explains things in plain language.
+Interview: Ask me 3–4 questions about my partner and what I already know before you start.
+Task: Turn my rough notes into 3–5 clear research questions and suggest keywords I can use in academic databases.
+        </div>
+      </section>
+
+      <!-- Ethics & guardrails -->
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-emoji">⚖️</div>
+          <div class="section-title">Using AI ethically: guardrails we discussed</div>
+        </div>
+        <p>
+          AI is powerful, but it also has limits. It can hallucinate, reflect bias, and encourage
+          “cognitive offloading” where you stop thinking. Here are the key guardrails from the workshop:
+        </p>
+
+        <div class="ethic-grid">
+          <div class="ethic-pill">
+            <div class="traffic-label">
+              <span class="traffic-dot green"></span>
+              <span>Green light · low-risk uses</span>
+            </div>
+            <p>
+              Brainstorming ideas, organizing notes, generating questions, explaining concepts in a new way,
+              summarizing non-sensitive readings.
+            </p>
+          </div>
+          <div class="ethic-pill">
+            <div class="traffic-label">
+              <span class="traffic-dot yellow"></span>
+              <span>Yellow light · use with caution</span>
+            </div>
+            <p>
+              Drafting emails, writing outlines, proposing recommendations. You must edit, fact-check,
+              and make the final decisions yourself.
+            </p>
+          </div>
+          <div class="ethic-pill">
+            <div class="traffic-label">
+              <span class="traffic-dot red"></span>
+              <span>Red light · high-risk uses</span>
+            </div>
+            <p>
+              Copy-pasting assignments, sharing private data about real people, using AI to deceive,
+              or letting it replace your own thinking entirely.
+            </p>
+          </div>
+        </div>
+
+        <ul>
+          <li><strong>Double-check all facts.</strong> AI has no built-in concept of truth.</li>
+          <li><strong>Protect privacy.</strong> Don’t paste full names, IDs, or sensitive stories into prompts.</li>
+          <li><strong>Watch for bias.</strong> AI reflects patterns in its training data—use your critical thinking.</li>
+          <li><strong>You are the manager.</strong> The final work is your responsibility, not the model’s.</li>
+        </ul>
+      </section>
+
+      <!-- NotebookLM highlight -->
+      <section class="section-card light">
+        <div class="section-header">
+          <div class="section-emoji">📚</div>
+          <div class="section-title">NotebookLM: deeper research & learning</div>
+        </div>
+        <p>
+          We looked at <strong>NotebookLM</strong> as an example of using AI on your own sources (RAG).
+          You can load readings, notes, or documents and then ask questions about them.
+        </p>
+        <ul>
+          <li>Lower hallucinations when you stay within your uploaded sources.</li>
+          <li>Can generate podcasts, overviews, and mind maps from your materials.</li>
+          <li>Helps you quiz yourself and explore connections across documents.</li>
+        </ul>
+        <p style="margin-top:6px;font-size:0.85rem;">
+          Still: always check the sources and verify anything important before you rely on it.
         </p>
       </section>
 
-      <!-- Prompt Engineering -->
-      <section>
-        <h2>🧠 Prompt Engineering: CRIT Framework</h2>
-        <ul>
-          <li><strong>C — Context:</strong> Give background, the situation, the class, the topic.</li>
-          <li><strong>R — Role:</strong> Tell the AI how to behave (e.g., “act as my research assistant”).</li>
-          <li><strong>I — Interview:</strong> What follow-up questions should it ask you?</li>
-          <li><strong>T — Task:</strong> What output do you actually want?</li>
-        </ul>
+      <!-- Other free tools -->
+      <section class="section-card">
+        <div class="section-header">
+          <div class="section-emoji">🧰</div>
+          <div class="section-title">Other free AI tools that are useful for students</div>
+        </div>
+        <p>
+          These tools can help with note-taking, studying, writing, and presenting—without replacing your thinking.
+        </p>
+        <div class="tool-list">
+          <div class="tool-item">
+            <strong><a href="https://granola.ai" target="_blank" rel="noopener">Granola</a></strong>
+            <p>Smart meeting and lecture notes. Helps capture key points from conversations.</p>
+          </div>
+          <div class="tool-item">
+            <strong><a href="https://notebooklm.google" target="_blank" rel="noopener">NotebookLM</a></strong>
+            <p>Study from your own materials with overviews, quizzes, and structured breakdowns.</p>
+          </div>
+          <div class="tool-item">
+            <strong><a href="https://www.perplexity.ai" target="_blank" rel="noopener">Perplexity</a></strong>
+            <p>Search the web with citations. Good for seeing sources alongside AI answers.</p>
+          </div>
+          <div class="tool-item">
+            <strong><a href="https://www.grammarly.com" target="_blank" rel="noopener">Grammarly</a></strong>
+            <p>Helps clean up grammar, clarity, and tone—especially useful on final drafts.</p>
+          </div>
+          <div class="tool-item">
+            <strong><a href="https://gamma.app" target="_blank" rel="noopener">Gamma</a></strong>
+            <p>AI-assisted presentation builder for turning ideas into slide-style visuals quickly.</p>
+          </div>
+        </div>
+
+        <p style="margin-top:10px;font-size:0.86rem;color:var(--text-muted);">
+          Use these tools to <em>augment</em> how you learn: read, listen, watch, discuss, argue, defend, and teach.
+          Real learning still takes repetition and effort—AI just helps you get there in more ways.
+        </p>
       </section>
 
-      <!-- Ethical AI -->
-      <section>
-        <h2>⚖️ Ethical + Safe AI Use (From the Workshop)</h2>
-        <ul>
-          <li>AI has no concept of truth — AI can hallucinate confidently.</li>
-          <li>Always double-check facts — verify everything.</li>
-          <li>Do NOT paste personal names, private info, or sensitive data.</li>
-          <li>You are the manager. Final work = your responsibility.</li>
-          <li>Think in “Green / Yellow / Red” tasks depending on risk.</li>
-          <li>AI reflects biases in its training data — stay critical, stay skeptical.</li>
-        </ul>
-      </section>
-
-      <!-- Free Tools -->
-      <section>
-        <h2>🎁 Free AI Tools for Students</h2>
-        <ul>
-          <li><a href="https://granola.ai" target="_blank">Granola.ai</a> — Super clean AI note-taking app.</li>
-          <li><a href="https://notebooklm.google.com" target="_blank">NotebookLM</a> — Study your documents, low hallucinations, generates summaries, quizzes, podcasts.</li>
-          <li><a href="https://www.perplexity.ai/" target="_blank">Perplexity</a> — Real web research with citations (great for verifying info).</li>
-          <li><a href="https://grammarly.ai" target="_blank">Grammarly.ai</a> — Writing feedback, grammar, clarity.</li>
-          <li><a href="https://gamma.app" target="_blank">Gamma.app</a> — AI-powered presentations.</li>
-        </ul>
-      </section>
-
+      <div class="footer-note">
+        Built for your AI research workshop. Keep asking better questions &mdash; that skill will carry you far. 🚀
+      </div>
     </main>
   </div>
 </body>
 </html>
+
