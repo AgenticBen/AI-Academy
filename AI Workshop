@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Workshop Resource Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #172f5b;
+      --card: rgba(255,255,255,0.05);
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text-main: #ffffff;
+      --text-muted: #cbd5e1;
+      --border-subtle: rgba(255, 255, 255, 0.12);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      margin: 10px 0;
+    }
+
+    .top-intro {
+      margin-bottom: 28px;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    .headshot {
+      width: 160px;
+      height: auto;
+      border-radius: 12px;
+      margin: 12px 0;
+      border: 2px solid var(--accent-soft);
+    }
+
+    .logo {
+      margin-top: 4px;
+      width: 260px;
+      height: auto;
+    }
+
+    main section {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 18px 20px;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 18px;
+    }
+
+    section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul { padding-left: 1.1rem; }
+    li { margin-bottom: 6px; }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .link-card {
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 12px;
+      background: rgba(255,255,255,0.04);
+      transition: 0.15s ease;
+    }
+
+    .link-card:hover {
+      border-color: var(--accent-soft);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <img src="/mnt/data/Square Headshot.jpeg2.jpg" alt="Ben Dudley" class="headshot" />
+      <img src="/mnt/data/Dark Arc Logo '25.png" alt="Agentic Arc Logo" class="logo" />
+
+      <h1>Thanks for Attending the AI Research Workshop</h1>
+      <p class="top-intro">
+        Here are all the tools, links, and resources we explored — plus a few extras to help you keep going.
+      </p>
+
+      <p>
+        <strong>Presentation:</strong>
+        <a href="https://www.canva.com/design/DAG5FGgLRjQ/I5QlQK-D6Ps1enSsC_JbFQ/edit" target="_blank">
+          View the Workshop Slides
+        </a>
+      </p>
+
+      <p>
+        <strong>Connect with me:</strong><br/>
+        <a href="https://www.linkedin.com/in/ben-dudley1/" target="_blank">LinkedIn</a>  
+        • Email: <a href="mailto:agenticarcai@gmail.com">agenticarcai@gmail.com</a>  
+        • Phone: <a href="tel:+17046055193">704-605-5193</a>
+      </p>
+    </header>
+
+    <main>
+
+      <!-- AI Apps -->
+      <section>
+        <h2>💡 AI Tools We Covered</h2>
+        <div class="link-grid">
+          <div class="link-card">
+            <a href="https://chatgpt.com" target="_blank">ChatGPT</a><br/>
+            <small>General-purpose reasoning, writing, and research.</small>
+          </div>
+          <div class="link-card">
+            <a href="https://claude.ai" target="_blank">Claude</a><br/>
+            <small>Great for reading long PDFs and analysis-heavy work.</small>
+          </div>
+          <div class="link-card">
+            <a href="https://gemini.google.com" target="_blank">Gemini (Free Version)</a><br/>
+            <small>Google’s model — great for docs, research, and study support.</small>
+          </div>
+          <div class="link-card">
+            <a href="https://gemini.google/students/" target="_blank">Gemini Student Plan (1 Year Free)</a><br/>
+            <small>Free advanced features for students who sign up with .edu emails.</small>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prompts -->
+      <section>
+        <h2>✏️ 100+ Prompts for Students</h2>
+        <p>
+          Use these to help with writing, studying, research, organization, and more.
+        </p>
+        <p>
+          <a href="https://chatgpt.com/use-cases/students#" target="_blank">View 100 College Student Prompts</a>
+        </p>
+      </section>
+
+      <!-- Prompt Engineering -->
+      <section>
+        <h2>🧠 Prompt Engineering: CRIT Framework</h2>
+        <ul>
+          <li><strong>C — Context:</strong> Give background, the situation, the class, the topic.</li>
+          <li><strong>R — Role:</strong> Tell the AI how to behave (e.g., “act as my research assistant”).</li>
+          <li><strong>I — Interview:</strong> What follow-up questions should it ask you?</li>
+          <li><strong>T — Task:</strong> What output do you actually want?</li>
+        </ul>
+      </section>
+
+      <!-- Ethical AI -->
+      <section>
+        <h2>⚖️ Ethical + Safe AI Use (From the Workshop)</h2>
+        <ul>
+          <li>Always double-check facts — AI can hallucinate confidently.</li>
+          <li>Do NOT paste personal names, private info, or sensitive data.</li>
+          <li>AI has no concept of truth — verify everything.</li>
+          <li>You are the manager. Final work = your responsibility.</li>
+          <li>Think in “Green / Yellow / Red” tasks depending on risk.</li>
+          <li>AI reflects biases in its training data — stay critical.</li>
+        </ul>
+      </section>
+
+      <!-- Free Tools -->
+      <section>
+        <h2>🎁 Free AI Tools for Students</h2>
+        <ul>
+          <li><a href="https://granola.ai" target="_blank">Granola.ai</a> — Super clean AI note-taking app.</li>
+          <li><a href="https://notebooklm.google.com" target="_blank">NotebookLM</a> — Study your documents, low hallucinations, generates summaries, quizzes, podcasts.</li>
+          <li><a href="https://www.perplexity.ai/" target="_blank">Perplexity</a> — Real web research with citations (great for verifying info).</li>
+          <li><a href="https://grammarly.ai" target="_blank">Grammarly.ai</a> — Writing feedback, grammar, clarity.</li>
+          <li><a href="https://gamma.app" target="_blank">Gamma.app</a> — AI-powered presentations.</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>
