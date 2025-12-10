@@ -544,6 +544,56 @@
       color: var(--text-muted);
     }
 
+    /* NEW: 3×2 LLM table */
+    .table-wrapper {
+      margin-top: 12px;
+      overflow-x: auto;
+    }
+
+    .model-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      min-width: 480px; /* keeps 3 columns readable on small screens */
+    }
+
+    .model-table th,
+    .model-table td {
+      padding: 10px 8px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      vertical-align: top;
+    }
+
+    .model-table th {
+      font-weight: 600;
+      color: #e5f0ff;
+      background: rgba(15, 23, 42, 0.98);
+      text-align: left;
+    }
+
+    .model-name a {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .model-note {
+      margin-top: 4px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .prompt-cell a {
+      font-size: 0.85rem;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .model-table {
+        min-width: 0;
+        font-size: 0.85rem;
+      }
+    }
+
     @media (max-width: 880px) {
       .aside-inner {
         grid-template-columns: auto 1fr;
@@ -624,6 +674,7 @@
           </p>
         </div>
       </section>
+    </div>
 
     <main>
       <!-- Overview -->
@@ -681,49 +732,72 @@
         </div>
       </section>
 
-      <!-- LLMs -->
+      <!-- LLMs: 3×2 table -->
       <section class="section-card">
         <div class="section-header">
           <div class="section-emoji">🤖</div>
           <div class="section-title">Top Large Language Models (LLMs)</div>
         </div>
         <p>
-          An LLM is an AI chatbot that responds to prompts. These are three of the most popular,
-          all with powerful free versions you can start with today.
+          An LLM is an AI chatbot that responds to prompts. These three are popular, powerful,
+          and all have strong free versions you can start using today.
         </p>
-        <div class="link-grid">
-          <div class="link-card">
-            <a class="main-link" href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT by OpenAI</a>
-            <small>Great all-around assistant for brainstorming, drafting, and explaining complex topics in plain language.</small>
-            <span class="badge">Free version available</span>
-            <div class="prompt-links">
-              <a href="https://academy.openai.com/public/tags/prompt-packs-6849a0f98c613939acef841c" target="_blank" rel="noopener">
-                ChatGPT Prompt Library
-              </a>
-            </div>
-          </div>
 
-          <div class="link-card">
-            <a class="main-link" href="https://claude.ai" target="_blank" rel="noopener">Claude by Anthropic</a>
-            <small>Excellent for longer documents, thoughtful reasoning, and deep dives on research-style questions.</small>
-            <span class="badge">Free version available</span>
-            <div class="prompt-links">
-              <a href="https://platform.claude.com/docs/en/resources/prompt-library/library" target="_blank" rel="noopener">
-                Claude Prompt Library
-              </a>
-            </div>
-          </div>
-
-          <div class="link-card">
-            <a class="main-link" href="https://gemini.google" target="_blank" rel="noopener">Gemini by Google</a>
-            <small>Plays nicely with Google Docs, Slides, and Drive for document-heavy workflows and collaboration.</small>
-            <span class="badge">Free version available</span>
-            <div class="prompt-links">
-              <a href="https://ai.google.dev/gemini-api/prompts" target="_blank" rel="noopener">
-                Gemini Prompt Library
-              </a>
-            </div>
-          </div>
+        <div class="table-wrapper">
+          <table class="model-table">
+            <tr>
+              <th>
+                <div class="model-name">
+                  <a href="https://chatgpt.com" target="_blank" rel="noopener">
+                    ChatGPT by OpenAI
+                  </a>
+                </div>
+                <div class="model-note">
+                  Great all-around assistant for brainstorming, drafting, and explaining complex topics.
+                </div>
+              </th>
+              <th>
+                <div class="model-name">
+                  <a href="https://claude.ai" target="_blank" rel="noopener">
+                    Claude by Anthropic
+                  </a>
+                </div>
+                <div class="model-note">
+                  Excellent for longer documents, thoughtful reasoning, and research-style questions.
+                </div>
+              </th>
+              <th>
+                <div class="model-name">
+                  <a href="https://gemini.google" target="_blank" rel="noopener">
+                    Gemini by Google
+                  </a>
+                </div>
+                <div class="model-note">
+                  Integrates well with Google Docs, Slides, and Drive for collaborative workflows.
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <td class="prompt-cell">
+                Prompt Library:<br />
+                <a href="https://academy.openai.com/public/tags/prompt-packs-6849a0f98c613939acef841c" target="_blank" rel="noopener">
+                  ChatGPT Prompt Packs
+                </a>
+              </td>
+              <td class="prompt-cell">
+                Prompt Library:<br />
+                <a href="https://platform.claude.com/docs/en/resources/prompt-library/library" target="_blank" rel="noopener">
+                  Claude Prompt Library
+                </a>
+              </td>
+              <td class="prompt-cell">
+                Prompt Library:<br />
+                <a href="https://ai.google.dev/gemini-api/prompts" target="_blank" rel="noopener">
+                  Gemini Prompt Library
+                </a>
+              </td>
+            </tr>
+          </table>
         </div>
       </section>
 
@@ -804,4 +878,3 @@
   </div>
 </body>
 </html>
-
