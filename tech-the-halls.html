@@ -421,54 +421,40 @@
       color: var(--text-muted);
     }
 
+    /* NEW: LLM cards styled like tools */
+    .model-list {
+      margin-top: 8px;
+    }
+
+    .model-card .prompt-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: #e5f0ff;
+      text-decoration: none;
+    }
+
+    .model-card .prompt-pill span.icon {
+      font-size: 0.9rem;
+    }
+
+    .model-card .prompt-pill:hover {
+      background: rgba(15, 23, 42, 1);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
+    }
+
     .footer-note {
       margin-top: 18px;
       text-align: center;
       font-size: 0.8rem;
       color: var(--text-muted);
-    }
-
-    /* LLM table */
-    .table-wrapper {
-      margin-top: 12px;
-      overflow-x: auto;
-    }
-
-    .model-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-      min-width: 480px;
-    }
-
-    .model-table th,
-    .model-table td {
-      padding: 10px 8px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      vertical-align: top;
-    }
-
-    .model-table th {
-      font-weight: 600;
-      color: #e5f0ff;
-      background: rgba(15, 23, 42, 0.98);
-      text-align: left;
-    }
-
-    .model-name a {
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .model-note {
-      margin-top: 4px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .prompt-cell a {
-      font-size: 0.85rem;
-      text-decoration: underline;
     }
 
     @media (max-width: 600px) {
@@ -482,10 +468,6 @@
       .btn {
         width: 100%;
         justify-content: center;
-      }
-      .model-table {
-        min-width: 0;
-        font-size: 0.85rem;
       }
     }
   </style>
@@ -599,7 +581,7 @@
           </div>
         </section>
 
-        <!-- LLMs table -->
+        <!-- LLMs as cards -->
         <section class="section-card">
           <div class="section-header">
             <div class="section-emoji">🤖</div>
@@ -610,61 +592,63 @@
             and all have strong free versions you can start using today.
           </p>
 
-          <div class="table-wrapper">
-            <table class="model-table">
-              <tr>
-                <th>
-                  <div class="model-name">
-                    <a href="https://chatgpt.com" target="_blank" rel="noopener">
-                      ChatGPT by OpenAI
-                    </a>
-                  </div>
-                  <div class="model-note">
-                    Great all-around assistant for brainstorming, drafting, and explaining complex topics.
-                  </div>
-                </th>
-                <th>
-                  <div class="model-name">
-                    <a href="https://claude.ai" target="_blank" rel="noopener">
-                      Claude by Anthropic
-                    </a>
-                  </div>
-                  <div class="model-note">
-                    Excellent for longer documents, thoughtful reasoning, and research-style questions.
-                  </div>
-                </th>
-                <th>
-                  <div class="model-name">
-                    <a href="https://gemini.google" target="_blank" rel="noopener">
-                      Gemini by Google
-                    </a>
-                  </div>
-                  <div class="model-note">
-                    Integrates well with Google Docs, Slides, and Drive for collaborative workflows.
-                  </div>
-                </th>
-              </tr>
-              <tr>
-                <td class="prompt-cell">
-                  Prompt Library:<br />
-                  <a href="https://academy.openai.com/public/tags/prompt-packs-6849a0f98c613939acef841c" target="_blank" rel="noopener">
-                    ChatGPT Prompt Packs
-                  </a>
-                </td>
-                <td class="prompt-cell">
-                  Prompt Library:<br />
-                  <a href="https://platform.claude.com/docs/en/resources/prompt-library/library" target="_blank" rel="noopener">
-                    Claude Prompt Library
-                  </a>
-                </td>
-                <td class="prompt-cell">
-                  Prompt Library:<br />
-                  <a href="https://ai.google.dev/gemini-api/prompts" target="_blank" rel="noopener">
-                    Gemini Prompt Library
-                  </a>
-                </td>
-              </tr>
-            </table>
+          <div class="tool-list model-list">
+            <div class="tool-item model-card">
+              <strong>
+                <a href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT by OpenAI</a>
+              </strong>
+              <p>
+                Great all-around assistant for brainstorming, drafting, and explaining complex topics
+                in plain language.
+              </p>
+              <a
+                class="prompt-pill"
+                href="https://academy.openai.com/public/tags/prompt-packs-6849a0f98c613939acef841c"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="icon">📚</span>
+                <span>Open ChatGPT Prompt Library</span>
+              </a>
+            </div>
+
+            <div class="tool-item model-card">
+              <strong>
+                <a href="https://claude.ai" target="_blank" rel="noopener">Claude by Anthropic</a>
+              </strong>
+              <p>
+                Excellent for longer documents, thoughtful reasoning, and deep dives on
+                research-style questions.
+              </p>
+              <a
+                class="prompt-pill"
+                href="https://platform.claude.com/docs/en/resources/prompt-library/library"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="icon">📚</span>
+                <span>Open Claude Prompt Library</span>
+              </a>
+            </div>
+
+            <div class="tool-item model-card">
+              <strong>
+                <a href="https://gemini.google" target="_blank" rel="noopener">Gemini by Google</a>
+              </strong>
+              <p>
+                Integrates smoothly with Google Docs, Slides, and Drive for collaborative,
+                document-heavy workflows.
+              </p>
+              <a
+                class="prompt-pill"
+                href="https://ai.google.dev/gemini-api/prompts"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="icon">📚</span>
+                <span>Open Gemini Prompt Library</span>
+              </a>
+            </div>
           </div>
         </section>
 
