@@ -17,7 +17,7 @@
     :root {
       --bg-deep: #020617;
       --bg-mid: #172f5b; /* Agentic Arc deep blue */
-      --accent: #51addf; /* brighter brandy blue */
+      --accent: #51addf; /* brighter brand blue */
       --accent-soft: rgba(81, 173, 223, 0.2);
       --accent-strong: #0ea5e9;
       --card-bg: rgba(15, 23, 42, 0.96);
@@ -53,19 +53,7 @@
       padding: 32px 16px 56px;
     }
 
-    .top-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-      gap: 28px;
-      align-items: stretch;
-      margin-bottom: 32px;
-    }
-
-    @media (max-width: 880px) {
-      .top-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
+    /* HERO */
 
     .hero-card {
       background: rgba(248, 250, 252, 0.98);
@@ -76,6 +64,7 @@
       box-shadow: 0 20px 60px rgba(15, 23, 42, 0.16);
       position: relative;
       overflow: hidden;
+      margin-bottom: 26px;
     }
 
     .hero-card::before {
@@ -127,7 +116,7 @@
       margin: 0 0 18px;
       font-size: 0.97rem;
       color: #4b5563;
-      max-width: 520px;
+      max-width: 640px;
       line-height: 1.55;
     }
 
@@ -210,120 +199,15 @@
       color: #0369a1;
     }
 
-    .aside-card {
-      position: relative;
-      border-radius: var(--radius-xl);
-      padding: 18px;
-      background: radial-gradient(circle at 10% 0, rgba(15, 23, 42, 0.88) 0, rgba(15, 23, 42, 0.98) 55%, rgba(15, 23, 42, 1) 100%);
-      border: 1px solid rgba(81, 173, 223, 0.45);
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .aside-card::before {
-      content: "";
-      position: absolute;
-      inset: -50%;
-      background:
-        conic-gradient(from 180deg, rgba(81, 173, 223, 0.22), transparent 35%, rgba(129, 140, 248, 0.25), transparent 70%, rgba(81, 173, 223, 0.22));
-      opacity: 0.7;
-      filter: blur(12px);
-      pointer-events: none;
-    }
-
-    .aside-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .headshot-wrap {
-      position: relative;
-      width: 96px;
-      height: 96px;
-      border-radius: 999px;
-      padding: 3px;
-      background:
-        conic-gradient(from 220deg, #51addf, #a855f7, #51addf);
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.85);
-    }
-
-    .headshot-wrap img {
-      width: 100%;
-      height: 100%;
-      border-radius: 999px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .aside-text {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .aside-name {
-      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      font-size: 1.02rem;
-      font-weight: 600;
-    }
-
-    .aside-role {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .logo-chip {
-      margin-top: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 9px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.92);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .logo-chip img {
-      width: 24px;
-      height: 24px;
-      object-fit: contain;
-    }
-
-    .logo-chip span {
-      color: #e5e7eb;
-      letter-spacing: 0.03em;
-      font-weight: 500;
-      text-transform: uppercase;
-    }
-
-    .aside-badge-row {
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .aside-badge {
-      font-size: 0.72rem;
-      padding: 3px 7px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      color: var(--text-muted);
-    }
+    /* MAIN LAYOUT */
 
     main {
-      margin-top: 8px;
-      display: flex;
-      flex-direction: column;
+      margin-top: 4px;
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 18px;
     }
 
@@ -538,13 +422,13 @@
     }
 
     .footer-note {
-      margin-top: 14px;
+      margin-top: 18px;
       text-align: center;
       font-size: 0.8rem;
       color: var(--text-muted);
     }
 
-    /* NEW: 3×2 LLM table */
+    /* LLM table */
     .table-wrapper {
       margin-top: 12px;
       overflow-x: auto;
@@ -554,7 +438,7 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 0.9rem;
-      min-width: 480px; /* keeps 3 columns readable on small screens */
+      min-width: 480px;
     }
 
     .model-table th,
@@ -588,29 +472,8 @@
     }
 
     @media (max-width: 600px) {
-      .model-table {
-        min-width: 0;
-        font-size: 0.85rem;
-      }
-    }
-
-    @media (max-width: 880px) {
-      .aside-inner {
-        grid-template-columns: auto 1fr;
-      }
-      .hero-links {
-        flex-direction: row;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .hero-card,
-      .aside-card {
-        padding: 18px 16px 16px;
-      }
-      .headshot-wrap {
-        width: 80px;
-        height: 80px;
+      .hero-card {
+        padding: 20px 16px 16px;
       }
       .hero-links {
         flex-direction: column;
@@ -620,256 +483,261 @@
         width: 100%;
         justify-content: center;
       }
+      .model-table {
+        min-width: 0;
+        font-size: 0.85rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <div class="top-grid">
-      <!-- LEFT: CTA & intro -->
-      <section class="hero-card">
-        <div class="hero-inner">
-          <div class="pill">
-            <span class="pill-dot"></span>
-            <span>Agentic Arc AI · AI Tool Kit</span>
-          </div>
-          <h1 class="hero-title">Ready to turn AI curiosity into real results?</h1>
-          <p class="hero-sub">
-            You’ve seen how powerful AI can be. Now let’s put it to work for your team.
-            <strong>I help small and mid-sized organizations use AI responsibly to save time,
-            improve decisions, and unlock new ideas.</strong>
-          </p>
-
-          <div class="hero-meta">
-            <span class="hero-tag">Custom AI workshops & trainings</span>
-            <span class="hero-tag">Hands-on tool kits for your staff</span>
-            <span class="hero-tag">Practical, ethical AI strategy</span>
-          </div>
-
-          <div class="hero-links">
-            <a
-              class="btn btn-primary"
-              href="https://calendly.com/ben-agenticarc/call-and-connect?month=2025-01"
-              target="_blank"
-              rel="noopener"
-            >
-              <span class="icon">✨</span>
-              <span>Book a free AI strategy call</span>
-            </a>
-            <a
-              class="btn btn-ghost"
-              href="https://www.linkedin.com/in/ben-dudley1/"
-              target="_blank"
-              rel="noopener"
-            >
-              <span class="icon">🔗</span>
-              <span>Connect with me on LinkedIn</span>
-            </a>
-          </div>
-
-          <p class="contact-line">
-            Prefer email? Reach me at
-            <a href="mailto:Ben@agenticarc.ai">Ben@agenticarc.ai</a> ·
-            <a href="https://www.agenticarc.ai" target="_blank" rel="noopener">www.agenticarc.ai</a>
-          </p>
+    <!-- HERO FULL-WIDTH -->
+    <section class="hero-card">
+      <div class="hero-inner">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span>Agentic Arc AI · AI Tool Kit</span>
         </div>
-      </section>
-    </div>
+        <h1 class="hero-title">Ready to turn AI curiosity into real results?</h1>
+        <p class="hero-sub">
+          You’ve seen how powerful AI can be. Now let’s put it to work for your team.
+          <strong>I help small and mid-sized organizations use AI responsibly to save time,
+          improve decisions, and unlock new ideas.</strong>
+        </p>
+
+        <div class="hero-meta">
+          <span class="hero-tag">Custom AI workshops & trainings</span>
+          <span class="hero-tag">Hands-on tool kits for your staff</span>
+          <span class="hero-tag">Practical, ethical AI strategy</span>
+        </div>
+
+        <div class="hero-links">
+          <a
+            class="btn btn-primary"
+            href="https://calendly.com/ben-agenticarc/call-and-connect?month=2025-01"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="icon">✨</span>
+            <span>Book a free AI strategy call</span>
+          </a>
+          <a
+            class="btn btn-ghost"
+            href="https://www.linkedin.com/in/ben-dudley1/"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="icon">🔗</span>
+            <span>Connect with me on LinkedIn</span>
+          </a>
+        </div>
+
+        <p class="contact-line">
+          Prefer email? Reach me at
+          <a href="mailto:Ben@agenticarc.ai">Ben@agenticarc.ai</a> ·
+          <a href="https://www.agenticarc.ai" target="_blank" rel="noopener">www.agenticarc.ai</a>
+        </p>
+      </div>
+    </section>
 
     <main>
-      <!-- Overview -->
-      <section class="section-card light">
-        <div class="section-header">
-          <div class="section-emoji">📘</div>
-          <div class="section-title">Ask better questions, get better answers</div>
-        </div>
-        <p>
-          AI is changing the way we think, work, and interact with the world around us.
-          This toolkit shows you how to ask better questions so AI can help you solve
-          problems, learn new skills, and explore new ideas at home, at work, or in daily life.
-        </p>
-      </section>
+      <!-- TWO-COLUMN MODULE GRID -->
+      <div class="modules-grid">
+        <!-- Overview -->
+        <section class="section-card light">
+          <div class="section-header">
+            <div class="section-emoji">📘</div>
+            <div class="section-title">Ask better questions, get better answers</div>
+          </div>
+          <p>
+            AI is changing the way we think, work, and interact with the world around us.
+            This toolkit shows you how to ask better questions so AI can help you solve
+            problems, learn new skills, and explore new ideas at home, at work, or in daily life.
+          </p>
+        </section>
 
-      <!-- CRIT framework -->
-      <section class="section-card">
-        <div class="section-header">
-          <div class="section-emoji">🎯</div>
-          <div class="section-title">CRIT: an easy framework for better prompts</div>
-        </div>
-        <p>
-          CRIT Prompting echoes the best habits for getting highly relevant responses from AI:
-          <strong>Context · Role · Interview · Task</strong>.
-        </p>
-        <div class="crit-grid">
-          <div class="crit-card">
-            <div class="crit-title">C · Context</div>
-            <p>
-              Give the AI context. Tell it what you’re working on, who it’s for, and any background
-              details that are relevant.
-            </p>
+        <!-- CRIT framework -->
+        <section class="section-card">
+          <div class="section-header">
+            <div class="section-emoji">🎯</div>
+            <div class="section-title">CRIT: an easy framework for better prompts</div>
           </div>
-          <div class="crit-card">
-            <div class="crit-title">R · Role</div>
-            <p>
-              Assign the AI a role with the expertise you want: marketer, biologist, fitness coach,
-              travel planner, consumer advocate, and more.
-            </p>
+          <p>
+            CRIT Prompting echoes the best habits for getting highly relevant responses from AI:
+            <strong>Context · Role · Interview · Task</strong>.
+          </p>
+          <div class="crit-grid">
+            <div class="crit-card">
+              <div class="crit-title">C · Context</div>
+              <p>
+                Give the AI context. Tell it what you’re working on, who it’s for, and any background
+                details that are relevant.
+              </p>
+            </div>
+            <div class="crit-card">
+              <div class="crit-title">R · Role</div>
+              <p>
+                Assign the AI a role with the expertise you want: marketer, biologist, fitness coach,
+                travel planner, consumer advocate, and more.
+              </p>
+            </div>
+            <div class="crit-card">
+              <div class="crit-title">I · Interview</div>
+              <p>
+                Let it interview you. Ask it to pose 3–4 questions, one at a time, so it can refine
+                your goals and fill in missing details.
+              </p>
+            </div>
+            <div class="crit-card">
+              <div class="crit-title">T · Task</div>
+              <p>
+                Give it a specific task and format: “write a recipe,” “outline a 4-week plan,”
+                or “give me a pros/cons table with next steps.”
+              </p>
+            </div>
           </div>
-          <div class="crit-card">
-            <div class="crit-title">I · Interview</div>
-            <p>
-              Let it interview you. Ask it to pose 3–4 questions, one at a time, so it can refine
-              your goals and fill in missing details.
-            </p>
-          </div>
-          <div class="crit-card">
-            <div class="crit-title">T · Task</div>
-            <p>
-              Give it a specific task and format: “write a recipe,” “outline a 4-week plan,”
-              or “give me a pros/cons table with next steps.”
-            </p>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- LLMs: 3×2 table -->
-      <section class="section-card">
-        <div class="section-header">
-          <div class="section-emoji">🤖</div>
-          <div class="section-title">Top Large Language Models (LLMs)</div>
-        </div>
-        <p>
-          An LLM is an AI chatbot that responds to prompts. These three are popular, powerful,
-          and all have strong free versions you can start using today.
-        </p>
+        <!-- LLMs table -->
+        <section class="section-card">
+          <div class="section-header">
+            <div class="section-emoji">🤖</div>
+            <div class="section-title">Top Large Language Models (LLMs)</div>
+          </div>
+          <p>
+            An LLM is an AI chatbot that responds to prompts. These three are popular, powerful,
+            and all have strong free versions you can start using today.
+          </p>
 
-        <div class="table-wrapper">
-          <table class="model-table">
-            <tr>
-              <th>
-                <div class="model-name">
-                  <a href="https://chatgpt.com" target="_blank" rel="noopener">
-                    ChatGPT by OpenAI
+          <div class="table-wrapper">
+            <table class="model-table">
+              <tr>
+                <th>
+                  <div class="model-name">
+                    <a href="https://chatgpt.com" target="_blank" rel="noopener">
+                      ChatGPT by OpenAI
+                    </a>
+                  </div>
+                  <div class="model-note">
+                    Great all-around assistant for brainstorming, drafting, and explaining complex topics.
+                  </div>
+                </th>
+                <th>
+                  <div class="model-name">
+                    <a href="https://claude.ai" target="_blank" rel="noopener">
+                      Claude by Anthropic
+                    </a>
+                  </div>
+                  <div class="model-note">
+                    Excellent for longer documents, thoughtful reasoning, and research-style questions.
+                  </div>
+                </th>
+                <th>
+                  <div class="model-name">
+                    <a href="https://gemini.google" target="_blank" rel="noopener">
+                      Gemini by Google
+                    </a>
+                  </div>
+                  <div class="model-note">
+                    Integrates well with Google Docs, Slides, and Drive for collaborative workflows.
+                  </div>
+                </th>
+              </tr>
+              <tr>
+                <td class="prompt-cell">
+                  Prompt Library:<br />
+                  <a href="https://academy.openai.com/public/tags/prompt-packs-6849a0f98c613939acef841c" target="_blank" rel="noopener">
+                    ChatGPT Prompt Packs
                   </a>
-                </div>
-                <div class="model-note">
-                  Great all-around assistant for brainstorming, drafting, and explaining complex topics.
-                </div>
-              </th>
-              <th>
-                <div class="model-name">
-                  <a href="https://claude.ai" target="_blank" rel="noopener">
-                    Claude by Anthropic
+                </td>
+                <td class="prompt-cell">
+                  Prompt Library:<br />
+                  <a href="https://platform.claude.com/docs/en/resources/prompt-library/library" target="_blank" rel="noopener">
+                    Claude Prompt Library
                   </a>
-                </div>
-                <div class="model-note">
-                  Excellent for longer documents, thoughtful reasoning, and research-style questions.
-                </div>
-              </th>
-              <th>
-                <div class="model-name">
-                  <a href="https://gemini.google" target="_blank" rel="noopener">
-                    Gemini by Google
+                </td>
+                <td class="prompt-cell">
+                  Prompt Library:<br />
+                  <a href="https://ai.google.dev/gemini-api/prompts" target="_blank" rel="noopener">
+                    Gemini Prompt Library
                   </a>
-                </div>
-                <div class="model-note">
-                  Integrates well with Google Docs, Slides, and Drive for collaborative workflows.
-                </div>
-              </th>
-            </tr>
-            <tr>
-              <td class="prompt-cell">
-                Prompt Library:<br />
-                <a href="https://academy.openai.com/public/tags/prompt-packs-6849a0f98c613939acef841c" target="_blank" rel="noopener">
-                  ChatGPT Prompt Packs
-                </a>
-              </td>
-              <td class="prompt-cell">
-                Prompt Library:<br />
-                <a href="https://platform.claude.com/docs/en/resources/prompt-library/library" target="_blank" rel="noopener">
-                  Claude Prompt Library
-                </a>
-              </td>
-              <td class="prompt-cell">
-                Prompt Library:<br />
-                <a href="https://ai.google.dev/gemini-api/prompts" target="_blank" rel="noopener">
-                  Gemini Prompt Library
-                </a>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </section>
-
-      <!-- Which model do I use -->
-      <section class="section-card light">
-        <div class="section-header">
-          <div class="section-emoji">🧩</div>
-          <div class="section-title">Which model should I use?</div>
-        </div>
-        <p>
-          They’re all great. The core ideas are similar, but each one has its own “personality”
-          and strengths. Try the free versions, see which one feels best to you, and stick with
-          the one you prefer. If you need more usage or advanced tools, you can always upgrade later.
-        </p>
-      </section>
-
-      <!-- Prompt ideas -->
-      <section class="section-card">
-        <div class="section-header">
-          <div class="section-emoji">💡</div>
-          <div class="section-title">Prompt ideas for everyday life</div>
-        </div>
-        <p>
-          Not sure what to ask? Here are a few simple ways to plug AI into your real life:
-        </p>
-        <ul>
-          <li><strong>Recipe writer for healthy eating</strong> – ask for meals using what’s already in your fridge.</li>
-          <li><strong>Personal trainer</strong> – get exercise plans for your schedule, goals, and equipment.</li>
-          <li><strong>AI tutor</strong> – have it explain tricky topics in multiple ways until they click.</li>
-          <li><strong>Specialized consultant for your job</strong> – brainstorm ideas, emails, and templates tailored to your role.</li>
-          <li><strong>Travel agent & vacation planner</strong> – map routes, compare options, and plan itineraries.</li>
-        </ul>
-      </section>
-
-      <!-- Other amazing tools -->
-      <section class="section-card">
-        <div class="section-header">
-          <div class="section-emoji">🧰</div>
-          <div class="section-title">Other amazing AI tools</div>
-        </div>
-        <p>
-          These tools plug into specific parts of your day to keep you organized, informed, and moving faster.
-        </p>
-        <div class="tool-list">
-          <div class="tool-item">
-            <strong><a href="https://granola.ai" target="_blank" rel="noopener">Granola.ai</a></strong>
-            <p>
-              AI-powered meeting notes, transcripts, and summaries.
-              Turn conversations into clean, searchable notes with action items you can actually follow through on.
-            </p>
+                </td>
+              </tr>
+            </table>
           </div>
-          <div class="tool-item">
-            <strong><a href="https://wisprflow.ai" target="_blank" rel="noopener">WisprFlow.ai</a></strong>
-            <p>
-              A voice-to-text AI tool that makes writing faster.
-              Speak out ideas, emails, or reports and let WisprFlow turn them into editable drafts so you’re not staring at a blank page.
-            </p>
-          </div>
-          <div class="tool-item">
-            <strong><a href="https://www.perplexity.ai" target="_blank" rel="noopener">Perplexity.ai</a></strong>
-            <p>
-              AI search with citations.
-              Ask questions and see AI-generated answers alongside linked sources so you can quickly verify and keep digging deeper.
-            </p>
-          </div>
-        </div>
+        </section>
 
-        <p style="margin-top:10px;font-size:0.86rem;color:var(--text-muted);">
-          Use these tools to augment how you think, not replace it.
-          The more you read, debate, and experiment, the more valuable AI becomes as a partner in your work and life.
-        </p>
-      </section>
+        <!-- Which model -->
+        <section class="section-card light">
+          <div class="section-header">
+            <div class="section-emoji">🧩</div>
+            <div class="section-title">Which model should I use?</div>
+          </div>
+          <p>
+            They’re all great. The core ideas are similar, but each one has its own “personality”
+            and strengths. Try the free versions, see which one feels best to you, and stick with
+            the one you prefer. If you need more usage or advanced tools, you can always upgrade later.
+          </p>
+        </section>
+
+        <!-- Prompt ideas -->
+        <section class="section-card">
+          <div class="section-header">
+            <div class="section-emoji">💡</div>
+            <div class="section-title">Prompt ideas for everyday life</div>
+          </div>
+          <p>
+            Not sure what to ask? Here are a few simple ways to plug AI into your real life:
+          </p>
+          <ul>
+            <li><strong>Recipe writer for healthy eating</strong> – ask for meals using what’s already in your fridge.</li>
+            <li><strong>Personal trainer</strong> – get exercise plans for your schedule, goals, and equipment.</li>
+            <li><strong>AI tutor</strong> – have it explain tricky topics in multiple ways until they click.</li>
+            <li><strong>Specialized consultant for your job</strong> – brainstorm ideas, emails, and templates tailored to your role.</li>
+            <li><strong>Travel agent & vacation planner</strong> – map routes, compare options, and plan itineraries.</li>
+          </ul>
+        </section>
+
+        <!-- Other tools -->
+        <section class="section-card">
+          <div class="section-header">
+            <div class="section-emoji">🧰</div>
+            <div class="section-title">Other amazing AI tools</div>
+          </div>
+          <p>
+            These tools plug into specific parts of your day to keep you organized, informed, and moving faster.
+          </p>
+          <div class="tool-list">
+            <div class="tool-item">
+              <strong><a href="https://granola.ai" target="_blank" rel="noopener">Granola.ai</a></strong>
+              <p>
+                AI-powered meeting notes, transcripts, and summaries.
+                Turn conversations into clean, searchable notes with action items you can actually follow through on.
+              </p>
+            </div>
+            <div class="tool-item">
+              <strong><a href="https://wisprflow.ai" target="_blank" rel="noopener">WisprFlow.ai</a></strong>
+              <p>
+                A voice-to-text AI tool that makes writing faster.
+                Speak out ideas, emails, or reports and let WisprFlow turn them into editable drafts so you’re not staring at a blank page.
+              </p>
+            </div>
+            <div class="tool-item">
+              <strong><a href="https://www.perplexity.ai" target="_blank" rel="noopener">Perplexity.ai</a></strong>
+              <p>
+                AI search with citations.
+                Ask questions and see AI-generated answers alongside linked sources so you can quickly verify and keep digging deeper.
+              </p>
+            </div>
+          </div>
+
+          <p style="margin-top:10px;font-size:0.86rem;color:var(--text-muted);">
+            Use these tools to augment how you think, not replace it.
+            The more you read, debate, and experiment, the more valuable AI becomes as a partner in your work and life.
+          </p>
+        </section>
+      </div>
 
       <div class="footer-note">
         Thanks for exploring AI with me. Keep asking better questions—your curiosity is the real superpower. 🚀
