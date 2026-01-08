@@ -193,4 +193,797 @@
     }
     .hero-tag{
       font-size:.78rem;
-      padding:4px 9
+      padding:4px 9px;
+      border-radius:999px;
+      border:1px dashed rgba(148,163,184,.9);
+      color:#374151;
+      background: rgba(255,255,255,.9);
+    }
+
+    .hero-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 8px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:9px 14px;
+      border-radius:999px;
+      border:1px solid rgba(15,23,42,.12);
+      font-size:.88rem;
+      font-weight:500;
+      text-decoration:none;
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
+      white-space:nowrap;
+      user-select:none;
+    }
+    .btn-primary{
+      background: radial-gradient(circle at top left, #51addf 0, #172f5b 125%);
+      color:#f9fafb;
+      border-color: rgba(81,173,223,.9);
+      box-shadow: 0 16px 35px rgba(37,99,235,.30);
+    }
+    .btn-primary:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(30,64,175,.40);
+      text-decoration:none;
+    }
+    .btn-ghost{
+      background: rgba(248,250,252,.92);
+      color:#111827;
+    }
+    .btn-ghost:hover{
+      background:#e5e7eb;
+      transform: translateY(-1px);
+      text-decoration:none;
+    }
+    .btn span.icon{ font-size:1.05rem; }
+
+    .contact-line{
+      margin-top:10px;
+      font-size:.82rem;
+      color:#6b7280;
+    }
+    .contact-line a{ color:#0369a1; }
+
+    /* Layout */
+    main{ margin-top:10px; }
+    .modules-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap:18px;
+    }
+    .section-card{
+      border-radius: var(--radius-xl);
+      padding:18px 18px 16px;
+      border:1px solid var(--border-subtle);
+      background: linear-gradient(135deg, rgba(15,23,42,.97), rgba(15,23,42,.90));
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow-soft);
+      position:relative;
+      overflow:hidden;
+    }
+    .section-card.light{
+      background: linear-gradient(135deg, rgba(248,250,252,.99), rgba(241,245,249,.97));
+      color:#020617;
+      border-color: rgba(148,163,184,.55);
+      box-shadow: 0 20px 60px rgba(15,23,42,.24);
+    }
+    .section-header{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:8px;
+    }
+    .section-emoji{
+      width:24px;height:24px;border-radius:999px;
+      display:inline-flex; align-items:center; justify-content:center;
+      background: radial-gradient(circle at 30% 0, var(--accent) 0, #0f172a 100%);
+      box-shadow: 0 0 18px rgba(81,173,223,.7);
+      font-size:.95rem;
+      flex: 0 0 24px;
+    }
+    .section-title{
+      font-family:"Space Grotesk",system-ui,sans-serif;
+      font-size:1.05rem;
+      letter-spacing:.02em;
+    }
+    .section-card p, .section-card li{
+      font-size:.92rem;
+      line-height:1.55;
+      color:var(--text-muted);
+    }
+    .section-card.light p, .section-card.light li{ color:#4b5563; }
+    .section-card ul{ margin: 6px 0 0; padding-left: 1.1rem; }
+
+    .mini{
+      font-size:.82rem;
+      color: var(--text-muted);
+    }
+    .section-card.light .mini{ color:#6b7280; }
+
+    .divider{
+      height:1px;
+      width:100%;
+      background: rgba(148,163,184,.25);
+      margin:12px 0;
+    }
+
+    /* Chips / copyables */
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.45);
+      background: rgba(2,6,23,.35);
+      color:#e5f0ff;
+      font-size:.78rem;
+      cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease, background .12s ease;
+      user-select:none;
+    }
+    .section-card.light .chip{
+      background: rgba(255,255,255,.75);
+      color:#111827;
+    }
+    .chip:hover{
+      transform: translateY(-1px);
+      border-color: rgba(81,173,223,.55);
+      box-shadow: 0 12px 32px rgba(2,6,23,.45);
+    }
+    .chip small{
+      opacity:.8;
+      font-size:.72rem;
+    }
+    .toast{
+      position:fixed;
+      bottom:18px;
+      left:50%;
+      transform: translateX(-50%);
+      background: rgba(2,6,23,.85);
+      border:1px solid rgba(148,163,184,.35);
+      color:#e5f0ff;
+      padding:10px 12px;
+      border-radius: 999px;
+      font-size:.82rem;
+      box-shadow: 0 18px 45px rgba(2,6,23,.65);
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .18s ease, transform .18s ease;
+      z-index:99;
+    }
+    .toast.show{
+      opacity:1;
+      transform: translateX(-50%) translateY(-2px);
+    }
+
+    /* CRIT grid */
+    .crit-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap:10px;
+      margin-top:10px;
+    }
+    .crit-card{
+      border-radius: 14px;
+      padding:9px 10px;
+      background: radial-gradient(circle at 0 0, rgba(81,173,223,.20) 0, rgba(15,23,42,.97) 70%);
+      border: 1px solid rgba(81,173,223,.50);
+    }
+    .crit-title{
+      font-size:.85rem;
+      font-weight:600;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      margin-bottom:3px;
+      color:#e5f3ff;
+    }
+    .crit-card p{ font-size:.80rem; margin:0; color:var(--text-muted); }
+
+    /* Link / tool list */
+    .tool-list{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap:10px;
+      margin-top:8px;
+    }
+    .tool-item{
+      border-radius: 14px;
+      padding:9px 10px;
+      border:1px solid rgba(148,163,184,.55);
+      background: radial-gradient(circle at 0 0, rgba(15,23,42,.90) 0, rgba(15,23,42,1) 70%);
+    }
+    .section-card.light .tool-item{
+      background: rgba(248,250,252,.98);
+    }
+    .tool-item strong{ font-size:.88rem; }
+    .tool-item p{ margin:2px 0 0; font-size:.82rem; color:var(--text-muted); }
+    .section-card.light .tool-item p{ color:#6b7280; }
+
+    /* Prompt builder */
+    .builder{
+      margin-top:10px;
+      border-radius: var(--radius-lg);
+      border:1px solid rgba(148,163,184,.45);
+      background: rgba(2,6,23,.28);
+      padding:12px;
+    }
+    .section-card.light .builder{
+      background: rgba(255,255,255,.7);
+    }
+    .builder-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .builder label{
+      display:block;
+      font-size:.78rem;
+      color: var(--text-muted);
+      margin-bottom:6px;
+    }
+    .section-card.light .builder label{ color:#6b7280; }
+    .builder input, .builder textarea, .builder select{
+      width:100%;
+      border-radius: 12px;
+      border:1px solid rgba(148,163,184,.45);
+      padding:10px 10px;
+      font-size:.88rem;
+      outline:none;
+      background: rgba(15,23,42,.85);
+      color:#e5f0ff;
+    }
+    .section-card.light .builder input,
+    .section-card.light .builder textarea,
+    .section-card.light .builder select{
+      background: rgba(248,250,252,.98);
+      color:#111827;
+    }
+    .builder textarea{ min-height: 84px; resize: vertical; }
+    .builder-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      margin-top:10px;
+    }
+    .builder-output{
+      margin-top:10px;
+      border-radius: 14px;
+      border:1px solid rgba(148,163,184,.35);
+      padding:10px 10px;
+      background: rgba(2,6,23,.35);
+      color:#e5f0ff;
+      font-size:.86rem;
+      line-height:1.55;
+      white-space:pre-wrap;
+    }
+    .section-card.light .builder-output{
+      background: rgba(255,255,255,.85);
+      color:#111827;
+    }
+
+    /* Footer */
+    .footer-note{
+      margin-top: 18px;
+      text-align:center;
+      font-size:.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 720px){
+      .builder-grid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px){
+      .hero-card{ padding:20px 16px 16px; }
+      .hero-links{ flex-direction:column; align-items:stretch; }
+      .btn{ width:100%; justify-content:center; }
+      .brand{ min-width: unset; }
+      .navlinks{ justify-content:flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- Sticky nav -->
+    <div class="topbar" aria-label="Quick navigation">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-badge" aria-hidden="true">AI</div>
+          <div class="brand-title">
+            <strong>AI for the Lifelong Learner</strong>
+            <small>From curiosity → capability</small>
+          </div>
+        </div>
+        <nav class="navlinks">
+          <a href="#start">Start</a>
+          <a href="#ai101">AI 101</a>
+          <a href="#tools">Tools</a>
+          <a href="#crit">CRIT</a>
+          <a href="#prompts">Prompts</a>
+          <a href="#risks">Risks</a>
+          <a href="#next">Next steps</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero-card" id="start">
+      <div class="hero-inner">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span>Workshop Resource Guide · Ben Dudley</span>
+        </div>
+
+        <h1 class="hero-title">AI for the Lifelong Learner</h1>
+        <p class="hero-sub">
+          You don’t need to be “techy” to use AI well. You just need a simple loop:
+          <strong>ask → verify → apply</strong>.
+          This page is your cheat-sheet for doing that on repeat (without spiraling into robot dependency 😄).
+        </p>
+
+        <div class="hero-meta" aria-label="Workshop outcomes">
+          <span class="hero-tag">Understand the basics of AI</span>
+          <span class="hero-tag">Talk to AI to get what you want</span>
+          <span class="hero-tag">3+ high-value use cases today</span>
+          <span class="hero-tag">Know the key risks</span>
+        </div>
+
+        <div class="hero-links">
+          <a class="btn btn-primary" href="https://dot.cards/benthebin" target="_blank" rel="noopener">
+            <span class="icon">🪪</span><span>My digital card</span>
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/ben-dudley1/" target="_blank" rel="noopener">
+            <span class="icon">🔗</span><span>Connect on LinkedIn</span>
+          </a>
+          <a class="btn btn-ghost" href="mailto:Ben@agenticarc.ai">
+            <span class="icon">✉️</span><span>Email me</span>
+          </a>
+        </div>
+
+        <p class="contact-line">
+          Want help bringing this to your team? I work with SMBs, nonprofits, and service-based businesses.
+          Reach me at <a href="mailto:Ben@agenticarc.ai">Ben@agenticarc.ai</a>.
+        </p>
+      </div>
+    </section>
+
+    <main>
+      <div class="modules-grid">
+
+        <!-- QUICK START -->
+        <section class="section-card light" id="quick">
+          <div class="section-header">
+            <div class="section-emoji">🚀</div>
+            <div class="section-title">Your “3-step loop” for using AI without face-planting</div>
+          </div>
+          <p>
+            Think of AI as <strong>very smart autocomplete</strong>… but for ideas, drafts, plans, and explanations.
+            Your job is to steer it, then sanity-check it.
+          </p>
+          <ul>
+            <li><strong>Ask</strong> for a draft, plan, or explanation (use CRIT below).</li>
+            <li><strong>Verify</strong> anything important: names, numbers, medical/legal advice, quotes, claims.</li>
+            <li><strong>Apply</strong>: turn output into 1–3 actions you can do <em>this week</em>.</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <p class="mini"><strong>Copy-friendly follow-ups</strong> (click to copy):</p>
+          <div class="chips" role="list">
+            <div class="chip" role="listitem" data-copy="Rate your answer 1–10 for accuracy and bias. What would make it a 10?">
+              ⭐ Rate it <small>(accuracy & bias)</small>
+            </div>
+            <div class="chip" role="listitem" data-copy="Give me 3 non-obvious angles I might be missing.">
+              🧠 Non-obvious angles
+            </div>
+            <div class="chip" role="listitem" data-copy="Explain this like I'm 12, then again like I'm an expert.">
+              🎓 12 → expert
+            </div>
+            <div class="chip" role="listitem" data-copy="Play devil’s advocate against your own answer and suggest alternatives.">
+              😈 Devil’s advocate
+            </div>
+            <div class="chip" role="listitem" data-copy="Turn this into 3 concrete actions I can take this week.">
+              ✅ 3 actions this week
+            </div>
+          </div>
+        </section>
+
+        <!-- AI 101 -->
+        <section class="section-card" id="ai101">
+          <div class="section-header">
+            <div class="section-emoji">🧠</div>
+            <div class="section-title">AI 101 (in human language)</div>
+          </div>
+
+          <p>
+            <strong>AI</strong> is a big umbrella. Under it: <strong>Machine Learning</strong> and <strong>Deep Learning</strong>.
+            <strong>Generative AI</strong> is the part that creates new content (text, images, audio, video, code).
+          </p>
+
+          <ul>
+            <li><strong>Generative AI = next-word prediction</strong> (a.k.a. “smart autocomplete”).</li>
+            <li>It turns words into tokens (little chunks), then predicts what token should come next.</li>
+            <li>Different training data → different strengths, weaknesses, and “vibes.”</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <p class="mini"><strong>TL;DR:</strong> You don’t “search” AI. You <em>collaborate</em> with it. The quality comes from your context + your follow-ups.</p>
+        </section>
+
+        <!-- Tools & features -->
+        <section class="section-card" id="tools">
+          <div class="section-header">
+            <div class="section-emoji">🧰</div>
+            <div class="section-title">Common tools + “wait, AI can do THAT?” features</div>
+          </div>
+
+          <p>
+            The main chatbots are great for writing, brainstorming, and explanations.
+            Then there are “power features” that unlock new workflows.
+          </p>
+
+          <div class="tool-list">
+            <div class="tool-item">
+              <strong><a href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a></strong>
+              <p>Strong all-around assistant for drafting, ideation, learning, and projects.</p>
+            </div>
+            <div class="tool-item">
+              <strong><a href="https://claude.ai" target="_blank" rel="noopener">Claude</a></strong>
+              <p>Great for longer documents, thoughtful analysis, and “talk it out” reasoning.</p>
+            </div>
+            <div class="tool-item">
+              <strong><a href="https://gemini.google" target="_blank" rel="noopener">Gemini</a></strong>
+              <p>Nice for Google Docs/Drive workflows and document-heavy tasks.</p>
+            </div>
+            <div class="tool-item">
+              <strong><a href="https://www.microsoft.com/en-us/microsoft-copilot" target="_blank" rel="noopener">Copilot</a></strong>
+              <p>Useful if you live in Microsoft tools and want AI in the flow of work.</p>
+            </div>
+            <div class="tool-item">
+              <strong><a href="https://www.perplexity.ai" target="_blank" rel="noopener">Perplexity</a></strong>
+              <p>AI search with citations — good for “show me sources” questions.</p>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <p class="mini"><strong>Power features to explore:</strong></p>
+          <ul>
+            <li>Image / video / song generation</li>
+            <li>Custom assistants (Custom GPTs / Gems / Claude Projects)</li>
+            <li>Deep research modes</li>
+            <li>NotebookLM-style podcast or study-audio generation</li>
+            <li>Real-time voice-to-voice AI</li>
+            <li>Autonomous agents + coding agents</li>
+          </ul>
+        </section>
+
+        <!-- CRIT -->
+        <section class="section-card" id="crit">
+          <div class="section-header">
+            <div class="section-emoji">🎯</div>
+            <div class="section-title">CRIT: the easiest way to get better answers</div>
+          </div>
+
+          <p>
+            When AI fails, it’s usually because it didn’t have enough context — or you didn’t tell it what “good” looks like.
+            CRIT fixes that: <strong>Context · Role · Interview · Task</strong>.
+          </p>
+
+          <div class="crit-grid">
+            <div class="crit-card">
+              <div class="crit-title">C · Context</div>
+              <p>What are you working on? Who is it for? Any constraints, examples, or background?</p>
+            </div>
+            <div class="crit-card">
+              <div class="crit-title">R · Role</div>
+              <p>Give it a job title: coach, editor, travel planner, researcher, project manager…</p>
+            </div>
+            <div class="crit-card">
+              <div class="crit-title">I · Interview</div>
+              <p>Have it ask you 3 questions (one at a time) to fill gaps before answering.</p>
+            </div>
+            <div class="crit-card">
+              <div class="crit-title">T · Task</div>
+              <p>Be specific: what do you want, in what format, by when, and how detailed?</p>
+            </div>
+          </div>
+
+          <div class="builder" aria-label="CRIT prompt builder">
+            <div class="builder-grid">
+              <div>
+                <label for="bContext">Context</label>
+                <textarea id="bContext" placeholder="I’m preparing for ______. Audience: ______. Constraints: ______."></textarea>
+              </div>
+              <div>
+                <label for="bRole">Role</label>
+                <input id="bRole" placeholder="Act as a ______ (expert / coach / editor / etc.)" />
+              </div>
+              <div>
+                <label for="bInterview">Interview (questions)</label>
+                <select id="bInterview">
+                  <option value="Ask me 3 questions, one at a time, before you answer.">Ask 3 questions (recommended)</option>
+                  <option value="Ask me 1 clarifying question before you answer.">Ask 1 question</option>
+                  <option value="Don't ask questions—make reasonable assumptions and tell me what you assumed.">No questions (but state assumptions)</option>
+                </select>
+              </div>
+              <div>
+                <label for="bTask">Task</label>
+                <textarea id="bTask" placeholder="Create ______. Output format: bullets / table / checklist. Tone: ______."></textarea>
+              </div>
+            </div>
+
+            <div class="builder-actions">
+              <button class="btn btn-primary" type="button" id="buildPrompt">
+                <span class="icon">🧪</span><span>Build prompt</span>
+              </button>
+              <button class="btn btn-ghost" type="button" id="copyPrompt">
+                <span class="icon">📋</span><span>Copy prompt</span>
+              </button>
+              <span class="mini" id="builderHint">Tip: the more specific you are, the less “generic AI” it feels.</span>
+            </div>
+
+            <div class="builder-output" id="promptOutput" aria-live="polite">
+              Your generated prompt will appear here.
+            </div>
+          </div>
+        </section>
+
+        <!-- Prompt ideas -->
+        <section class="section-card light" id="prompts">
+          <div class="section-header">
+            <div class="section-emoji">💡</div>
+            <div class="section-title">Prompt ideas you can use today</div>
+          </div>
+
+          <p>
+            The fun part: AI works best when you give it a role and a real constraint.
+            Here are a few “plug-and-play” use cases:
+          </p>
+
+          <ul>
+            <li><strong>Work Out Designer</strong> — “Make me a 4-week plan for my schedule and injuries. Ask 3 questions first.”</li>
+            <li><strong>Nutritionist</strong> — “Build a grocery list + 5 dinners using these ingredients. Keep it simple.”</li>
+            <li><strong>Travel Planner</strong> — “Plan a 3-day itinerary with a budget. Include walking routes + must-sees.”</li>
+            <li><strong>Research Assistant</strong> — “Summarize the pros/cons and give me 5 credible sources to verify.”</li>
+            <li><strong>Tutor</strong> — “Teach me this concept step-by-step. Quiz me after each section.”</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <p class="mini"><strong>“Custom assistant” role ideas</strong> (these can become Custom GPTs / Gems / Projects):</p>
+          <div class="chips">
+            <div class="chip" data-copy="Act as my Co-CEO. Challenge my assumptions, ask hard questions, and help me decide next actions. Ask 3 questions first.">👔 Co-CEO</div>
+            <div class="chip" data-copy="Act as a Prompt Architect. Improve my prompt using CRIT, then show me 3 improved versions.">🧱 Prompt Architect</div>
+            <div class="chip" data-copy="Act as an n8n Builder. Ask about my tools and triggers, then propose an automation flow with steps.">🔁 n8n Builder</div>
+            <div class="chip" data-copy="Act as a Sales GPT. Draft outreach, handle objections, and propose next-step options. Ask 3 questions first.">📈 Sales GPT</div>
+            <div class="chip" data-copy="Act as an ARC LinkedIn Strategy coach. Give me a weekly posting plan, hooks, and repurposing ideas.">🧭 ARC LinkedIn Strategy</div>
+            <div class="chip" data-copy="Act as a Contract Writer. Draft a simple service agreement with clear scope, payment terms, and timelines.">📝 Contract Writer</div>
+            <div class="chip" data-copy="Act as my Workshop Assistant. Turn my notes into an outline, activities, and a simple handout.">🎤 Workshop Assistant</div>
+          </div>
+        </section>
+
+        <!-- Risks -->
+        <section class="section-card" id="risks">
+          <div class="section-header">
+            <div class="section-emoji">⚠️</div>
+            <div class="section-title">Key risks (and how to not get dunked on)</div>
+          </div>
+
+          <p>
+            AI is useful… and it’s also confident, biased, and occasionally a lovable liar.
+            Here are the big ones:
+          </p>
+
+          <ul>
+            <li><strong>Bias</strong> — model outputs reflect the values and bias of training data.</li>
+            <li><strong>Hallucinations</strong> — it can invent facts, citations, and details that sound real.</li>
+            <li><strong>Scams</strong> — voice cloning + realistic emails make impersonation easier.</li>
+            <li><strong>Sycophancy</strong> — it tends to agree with you (even when you’re wrong).</li>
+            <li><strong>“AI slop / workslop”</strong> — high-volume content that’s unverified and low-signal.</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <p class="mini"><strong>Guardrails you can use immediately:</strong></p>
+          <ul>
+            <li><strong>Verify high-stakes info</strong> (health, legal, financial, identity) with real sources.</li>
+            <li><strong>Ask for uncertainty</strong>: “What are you least sure about?”</li>
+            <li><strong>Use a “safe word”</strong> with family/friends to confirm identity in weird situations.</li>
+            <li><strong>Make it cite sources</strong> (and then click them).</li>
+            <li><strong>Keep humans in the loop</strong> for decisions that matter.</li>
+          </ul>
+        </section>
+
+        <!-- Next steps -->
+        <section class="section-card light" id="next">
+          <div class="section-header">
+            <div class="section-emoji">🧭</div>
+            <div class="section-title">Homework + next steps</div>
+          </div>
+
+          <p>
+            <strong>Homework:</strong> next time you hit a real-life challenge, use CRIT to ask AI for help.
+            Then do one thing with the output within 24 hours. Momentum beats perfection.
+          </p>
+
+          <div class="divider"></div>
+
+          <p class="mini"><strong>If you want to go deeper, here are “next topic” options:</strong></p>
+          <ul>
+            <li>Risks of AI & ethics</li>
+            <li>Tool demos: my favorite tools and how I use them</li>
+            <li>How to identify AI-generated content (and why it matters)</li>
+            <li>AI: water & energy usage</li>
+            <li>AI in research</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <p class="mini">
+            Want the newest version of this guide (plus extra prompts)?
+            Add your feedback here:
+          </p>
+
+          <!-- Replace the # with your feedback form link when ready -->
+          <div class="hero-links" style="margin-top:8px;">
+            <a class="btn btn-primary" href="#" id="feedbackBtn">
+              <span class="icon">📝</span><span>Feedback form (add link)</span>
+            </a>
+            <a class="btn btn-ghost" href="https://dot.cards/benthebin" target="_blank" rel="noopener">
+              <span class="icon">🪪</span><span>Share my card</span>
+            </a>
+          </div>
+
+          <p class="mini" style="margin-top:10px;">
+            (If that button doesn’t go anywhere yet, it’s because the form link hasn’t been pasted in. Future Ben will fix it. Present Ben is doing his best.)
+          </p>
+        </section>
+
+        <!-- How I can help -->
+        <section class="section-card" id="help">
+          <div class="section-header">
+            <div class="section-emoji">🤝</div>
+            <div class="section-title">How I can help (and how you can help me)</div>
+          </div>
+
+          <p><strong>Who I work with:</strong> SMBs, nonprofits, and service-based businesses.</p>
+          <p class="mini"><strong>What I do:</strong></p>
+          <ul>
+            <li>Find the highest-ROI places to use AI</li>
+            <li>Build automations + copilots using the tools you already have</li>
+            <li>Train your team so it actually sticks</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <p class="mini"><strong>How you can help:</strong></p>
+          <ul>
+            <li>Share my info with any SMB leaders who want to transform with AI</li>
+            <li>Take my card and make an intro</li>
+            <li>Send me one “sticky problem” you want AI to help with</li>
+          </ul>
+
+          <div class="hero-links" style="margin-top:10px;">
+            <a class="btn btn-primary" href="https://dot.cards/benthebin" target="_blank" rel="noopener">
+              <span class="icon">✨</span><span>Open my card</span>
+            </a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/ben-dudley1/" target="_blank" rel="noopener">
+              <span class="icon">🔗</span><span>Connect</span>
+            </a>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="footer-note">
+        Keep asking better questions — your curiosity is the real superpower. 🚀
+      </div>
+    </main>
+
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Copied!</div>
+
+  <script>
+    // Tiny helper: clipboard + toast
+    const toast = document.getElementById("toast");
+    let toastTimer = null;
+    function showToast(msg){
+      toast.textContent = msg || "Copied!";
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 1400);
+    }
+
+    async function copyText(text){
+      try{
+        await navigator.clipboard.writeText(text);
+        showToast("Copied to clipboard ✅");
+      }catch(e){
+        // Fallback
+        const t = document.createElement("textarea");
+        t.value = text;
+        document.body.appendChild(t);
+        t.select();
+        document.execCommand("copy");
+        document.body.removeChild(t);
+        showToast("Copied ✅");
+      }
+    }
+
+    // Chips copy
+    document.querySelectorAll("[data-copy]").forEach(el => {
+      el.addEventListener("click", () => copyText(el.getAttribute("data-copy")));
+    });
+
+    // CRIT prompt builder
+    const bContext = document.getElementById("bContext");
+    const bRole = document.getElementById("bRole");
+    const bInterview = document.getElementById("bInterview");
+    const bTask = document.getElementById("bTask");
+    const out = document.getElementById("promptOutput");
+
+    function build(){
+      const context = (bContext.value || "").trim();
+      const role = (bRole.value || "").trim();
+      const interview = (bInterview.value || "").trim();
+      const task = (bTask.value || "").trim();
+
+      const prompt = [
+        "CRIT Prompt",
+        "",
+        role ? `Role: ${role}` : "Role: (add a role)",
+        context ? `Context: ${context}` : "Context: (add context)",
+        `Interview: ${interview || "Ask me 3 questions, one at a time, before you answer."}`,
+        task ? `Task: ${task}` : "Task: (add the task + output format)",
+        "",
+        "Before you answer, restate my goal in one sentence and list any assumptions you made."
+      ].join("\n");
+
+      out.textContent = prompt;
+      return prompt;
+    }
+
+    document.getElementById("buildPrompt").addEventListener("click", () => {
+      build();
+      showToast("Prompt built 🧪");
+    });
+
+    document.getElementById("copyPrompt").addEventListener("click", async () => {
+      const prompt = build();
+      await copyText(prompt);
+    });
+
+    // Feedback button gentle nudge if link isn't set
+    const feedbackBtn = document.getElementById("feedbackBtn");
+    feedbackBtn.addEventListener("click", (e) => {
+      if (feedbackBtn.getAttribute("href") === "#"){
+        e.preventDefault();
+        showToast("Add your feedback form link in the HTML 🔧");
+      }
+    });
+
+    // Initialize output with a built prompt
+    build();
+  </script>
+</body>
+</html>
